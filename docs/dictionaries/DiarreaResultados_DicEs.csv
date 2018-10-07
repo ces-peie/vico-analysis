@@ -1,0 +1,67 @@
+﻿NombreVariable,Ordinal,Activa,Tipo,Valores,Descripcion
+ID_Paciente,1,1,varchar(12),,Identificador de la persona a quién se le realizó el examen de heces
+UpdateVersion,2,1,Integer,,Valor de la versión que se esta presentando
+forDeletion,3,1,Integer,1 / 0,Valor que define si el registro es utilizable o no 
+InsertUser,4,1,varchar(12),,Usuario que insertó el registro
+InsertDate,5,1,datetime,,fecha en que se insertó el registro
+InsertMsg,6,1,varchar(100),,mensaje original 
+DBModifDate,7,1,datetime,,fecha en que se modificó el registro
+DBModifUser,8,1,varchar(12),,usuario que modificó el registro
+DBModifMsg,9,1,varchar(100),,mensaje sobre la modificación realizada al registro
+version,10,1,Integer,,versión actual del registro
+fechaIngresoEstudio,11,1,datetime,,Fecha en que se ingresó la muestra al estudio ( fecha en que se recibió en laboratorio)
+ID_Paciente_depto,12,1,[nvarchar](2),,Indica a que departamento pertenece la muestra que se esta recibiendo
+ID_Paciente_sitio,13,1,[nvarchar](1) ,,indica a que sitio pertenece la muestra que se esta recibiendo
+recepcionMuestraOriginal,14,1,Integer,si =1 / no = 0,Recibió muestra de heces entera
+recepcionMuestraHisopo,15,1,Integer,0 = No |1 = Sí| 99= Ausente/Missing,Indica si se recibió una muestra de hisopo
+recepcionMuestraPVA,16,1,int,NULL,NULL
+recepcionMuestraFormalina,17,1,Integer,0= Se hizo | 2=N/A > 5 años | 88 Missing,Indica si se recibió una muestra de Formalina
+floranormal,18,1,Integer,0 = No |1 = Sí| 99= Ausente/Missing,Indica si la muestra presenta flora normal
+salmonella,19,1,Integer,0 = No |1 = Sí| 99= Ausente/Missing,Indica si en la muestra se encontró Salmonella
+salmonellaSp,20,1,varchar(100),,Descripción del subtipo de Salmonella encontrado
+shigella,21,1,Integer,0 = No |1 = Sí| 99= Ausente/Missing,Indica si en la muestra se encontró Shigella
+shigellaSp,22,1,varchar(100),,Descripción del subtipo de Shigella encontrado
+campylobacter,23,1,Integer,0 = Negativo |1 = Positivo|2 = Dudoso|88=N/A|99 = Ausente (Missing),Indica si se encontró campylobacter
+campylobacterSp,24,1,varchar(100),,Indica la especie de campylobacter encontrada
+otro,25,1,varchar(100),,Indica si se encontró otro tipo de bacteria
+pruebaRotavirusHizo,26,1,Integer,0 = No |1 = Sí |88 = N/A,Indica si se realizó la prueba de rotavirus a la muestra
+rotavirus,27,1,Integer,0 = Negativo |1 = Positivo|2 = Dudoso|88=N/A|99 = Ausente (Missing),indica  el resultado de la prueba de rotavirus
+pruebaExamenFrescoHizo,28,1,Integer,0 = No se hizo |1 = Se hizo (FPC/tubo)|2 = Se hizo (Muestra Entera),Indica si se realizó una muestra de examen fresco  y el origen de la muestra
+pruebaExamenTricromicoHizo,29,1,Integer,0 = No |1 = Sí |88 = N/A,indica si se realizó la el examen tricromico
+pruebaExamenIFHizo,30,1,Integer,0 = No |1 = Sí |88 = N/A,indica si se realizó examen de inmunofluorescencia
+ascaris,31,1,Integer,0 = No|1 = Sí,Indica si se encontró Ascaris en alguna prueba realizada
+trichiuris,32,1,Integer,0 = No|1 = Sí,Indica si se encontró Trichuris en alguna prueba realizada
+nana,33,1,Integer,0 = No|1 = Sí,Indica si se encontró Hyminolepis nana en alguna prueba realizada
+diminuta,34,1,Integer,0 = No|1 = Sí,Indica si se encontró Hyminolepis diminuta en alguna prueba realizada
+uncinaria,35,1,Integer,0 = No|1 = Sí,Indica si se encontró Uncinaria en alguna prueba realizada
+enterobius,36,1,Integer,0 = No|1 = Sí,Indica si se encontró Enterobius vermicularis en alguna prueba realizada
+ecoli,37,1,Integer,0 = No|1 = Sí,Indica si se encontró Entamoeba Coli en alguna prueba realizada
+giardia,38,1,Integer,0 = No|1 = Sí,Indica si se encontró Giardia en alguna prueba realizada
+crypto,39,1,Integer,0 = No|1 = Sí,Indica si se encontró Cryptosporidium parvum en alguna prueba realizada
+ioda,40,1,Integer,0 = No|1 = Sí,Indica si se encontró Iodamoeba butschlii en alguna prueba realizada
+endolimax,41,1,Integer,0 = No|1 = Sí,Indica si se encontró Endolimax en alguna prueba realizada
+chilo,42,1,Integer,0 = No|1 = Sí,Indica si se encontró Chilomastix en alguna prueba realizada
+blasto,43,1,Integer,0 = No|1 = Sí,Indica si se encontró Blastocystis hominis en alguna prueba realizada
+NSOP,44,1,Integer,0 = No|1 = Sí,Define si no se encontró ningun parásito o bacteria en el paciente
+observaciones,45,1,varchar(100),,Se refiere a posibles observaciones en la prueba realizada
+pruebaCultivoHizo,46,1,Integer,0 = No |1 = Sí |88 = N/A,indica si se realizo un cultivo de bacterias
+pruebaExamenFrescoSpA,47,1,varchar(50),,"Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 3 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenFrescoSpB,48,1,varchar(50),,"Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 3 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenFrescoSpC,49,1,varchar(50),,"Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 3 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenTricromicoSpA,50,1,varchar(50),,"ESTA PRUEBA YA NO SE REALIZA Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 3 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenTricromicoSpB,51,1,varchar(50),,"ESTA PRUEBA YA NO SE REALIZA Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 3 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenTricromicoSpC,52,1,varchar(50),,"ESTA PRUEBA YA NO SE REALIZA Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 3 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenIFSpA,53,1,varchar(50),,"ESTA PRUEBA YA NO SE REALIZA Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 2 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+pruebaExamenIFSpB,54,1,varchar(50),,"ESTA PRUEBA YA NO SE REALIZA Resultado del examen en fresco, debido a que pueden coexistir los parásitos, se crearon 2 columnas para definir los resultados, si no existieran parasitos se debe colocar NSOP"
+PCREColi,55,0,,,OBSOLETA indica El reseultado para la prueba de Ecoli
+pruebaPCREColiHizo,56,1,Integer,0 = No |1 = Sí |88 = N/A,OBSOLETA indica si se realizo la prueba de Ecoli
+pruebaRotavirusTipificacionHizo,57,1,Integer,0 = No |1 = Sí |88 = N/A,indica si se realizó una subtipificación de rotavirus
+rotavirusTipificacion,58,1,varchar(100),,indica el nombre de la subtipificación de rotavirus
+recepcionMuestraCongeladas,59,1,Integer,0 = No |1 = Sí |88 = N/A,indica si se recibieron muestras congeladas
+SubjectID,60,1,varchar(100),,identificador unico de la persona en las bases de datos.
+strong,61,1,Integer,0 = No |1 = Sí,Indica si se encontró Strongyloides en alguna prueba realizada
+recepcionMuestraNorovirus,62,1,Integer,0 = No |1 = Sí |88 = N/A,indica si se recibieron muestras para realizar la prueba de norovirus
+Observaciones_UVG,63,1,varchar(100),,Indica si hay alguna observacion a la muestra recibida
+taenia,64,1,Integer,0 = No |1 = Sí,Indica si se encontró Taenia solium  en alguna prueba realizada
+PCREColi_ETEC,65,0,,,OBSOLETA indica El reseultado para la prueba de Ecoli en ETEC
+PCREColi_Prueba_DondeHizo,66,0,,,OBSOLETA indica en donde se realizó la prueba de Ecoli

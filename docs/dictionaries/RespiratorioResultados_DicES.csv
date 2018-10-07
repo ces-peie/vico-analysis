@@ -1,0 +1,55 @@
+﻿NombreVariable,Ordinal,Activa,Tipo,Valores,Descripcion
+ID_Paciente,1,1, nvarchar (11),,Identificador de la persona a quién se le realizó el examen de heces
+UpdateVersion,2,1, int,,Valor de la versión que se esta presentando
+forDeletion,3,1, int,1 | 0,Valor que define si el registro es utilizable o no 
+InsertUser,4,1, nvarchar (20),,Usuario que insertó el registro
+InsertDate,5,1, datetime,,fecha en que se insertó el registro
+InsertMsg,6,1, nvarchar,,mensaje original 
+DBModifDate,7,1, datetime,,fecha en que se modificó el registro
+DBModifUser,8,1, nvarchar (20),,usuario que modificó el registro
+DBModifMsg,9,1, nvarchar,,mensaje sobre la modificación realizada al registro
+version,10,1, nvarchar,,versión actual del registro
+fechaIngresoEstudio,11,1, datetime,,Fecha en que se registro que se tomo la prueba
+ID_Paciente_depto,12,1, nvarchar,,Departamento al que pertenece la muestra
+ID_Paciente_sitio,13,1, nvarchar,,Identificador del Sitio en el que ingreso la persona
+viralPCR_Hizo,14,1, int,0 = No| 1=Si | 97 = Pendiente,Indica si la prueba de PCR  Viral fué realizada
+viralPCR_RSV,15,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de RSV 
+viralPCR_hMPV,16,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de MPV
+viralPCR_hPIV1,17,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de ParaInfluenza 1
+viralPCR_hPIV2,18,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de ParaInfluenza 2
+viralPCR_hPIV3,19,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de ParaInfluenza 3
+viralPCR_AD,20,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Adenovirus
+viralPCR_FluA,21,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Influenza A
+viralPCR_FluB,22,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Influenza B
+viralPCR_RNP,23,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de RNP
+bacterialPCR_Hizo,24,1, int,0 = No| 1=Si | 97 = Pendiente,Indica si la prueba de PCR Bacterial fué realizada
+bacterialPCR_CP,25,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Chlamydia pneumoniae
+bacterialPCR_LP,26,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Legionella pneumophila
+bacterialPCR_LL,27,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Legionella longbeachae
+bacterialPCR_MP,28,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Mycoplasma pneumoniae
+bacterialPCR_Lsp,29,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Legionella sp
+bacterialPCR_SP,30,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Streptococcus pneumoniae
+bacterialBinax_Hizo,31,1, int,0 = No| 1=Si | 97 = Pendiente,Indica si la prueba de Binax fué realizada
+bacterialBinax_Lsp,32,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Legionella sp
+bacterialBinax_Sp,33,1, int,1 = Positivo | 0 = Negativo | 80 = Dudoso o inconcluso,Indica el resultado de  la prueba de Streptococcus pneumoniae
+ViralCT1,34,1, float,,OBSOLETO Resultado obtenido por la máquina  para el primer virus obtenido como positivo y la primera corrida
+ViralCT2,35,1, float,,OBSOLETO Resultado obtenido por la máquina  para el segundo virus obtenido como positivo y la primera corrida
+ViralCT3,36,1, float,,OBSOLETO Resultado obtenido por la máquina  para el tercer segundo obtenido como positivo y la primera corrida
+ResultadosLN,37,1, nvarchar(255),,Resultados obtenidos por laboratorio Nacional 
+observaciones,38,1, nvarchar,,Indica si hubo algun incidente al procesar la muestra
+ViralCT11,39,1, float,,OBSOLETO Resultado obtenido por la máquina  para el primer virus obtenido como positivo y la segunda corrida
+ViralCT111,40,1, float,,OBSOLETO Resultado obtenido por la máquina  para el primer virus obtenido como positivo y la tercera corrida
+ViralCT22,41,1, float,,OBSOLETO Resultado obtenido por la máquina  para el segundo virus obtenido como positivo y la segunda corrida
+ViralCT222,42,1, float,,OBSOLETO Resultado obtenido por la máquina  para el segundo virus obtenido como positivo y la tercera corrida
+ViralCT33,43,1, float,,OBSOLETO Resultado obtenido por la máquina  para el tercer virus obtenido como positivo y la segunda corrida
+ViralCT333,44,1, float,,OBSOLETO Resultado obtenido por la máquina  para el tercer virus obtenido como positivo y la tercera corrida
+estudioDiarreas,45,1, int,,Indica si el paciente se encuentra inscrito también en el estudio de Diarrea
+labNumero,46,1, int,,Numero correlativo asignado por el laboratorio
+evaluado,47,1, int,,
+SubjectID,48,1, nvarchar(255),,Identificador unico del sujeto
+BacterialCT1,49,1, float,,OBSOLETO Resultado obtenido por la máquina  para el primer resultado de bacteria obtenido como positivo y la primera corrida
+BacterialCT11,50,1, float,,OBSOLETO Resultado obtenido por la máquina  para el primer resultado de bacteria obtenido como positivo y la segunda corrida
+BacterialCT111,51,1, float,,OBSOLETO Resultado obtenido por la máquina  para el primer resultado de bacteria obtenido como positivo y la tercera corrida
+BacterialCT2,52,1, float,,OBSOLETO Resultado obtenido por la máquina  para el segundo resultado de bacteria obtenido como positivo y la segundoa corrida
+BacterialCT22,53,1, float,,OBSOLETO Resultado obtenido por la máquina  para el segundo resultado de bacteria obtenido como positivo y la segunda corrida
+BacterialCT222,54,1, float,,OBSOLETO Resultado obtenido por la máquina  para el segundo resultado de bacteria obtenido como positivo y la tercera corrida

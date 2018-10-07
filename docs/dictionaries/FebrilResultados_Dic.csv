@@ -1,0 +1,37 @@
+﻿NombreVariable,Tipo,Values,Descripcion
+SubjectID, nvarchar,,identificador unico de la persona en las bases de datos.
+ID_Paciente, nvarchar(11),,Identificador de la persona a quién se le realizó el examen de heces
+UpdateVersion, int,,Valor de la versión que se esta presentando
+forDeletion, int,,Valor que define si el registro es utilizable o no 
+InsertUser, nvarchar(20),,Usuario que insertó el registro
+InsertDate, datetime,,fecha en que se insertó el registro
+InsertMsg, nvarchar(255),,mensaje original 
+DBModifDate, datetime,,fecha en que se modificó el registro
+DBModifUser, nvarchar,,usuario que modificó el registro
+DBModifMsg, nvarchar(255),,mensaje sobre la modificación realizada al registro
+version, nvarchar(50),,versión actual del registro
+fechaIngresoEstudio, datetime,,Fecha en que se registro que se tomo la prueba
+ID_Paciente_depto, nvarchar(2),,Indica a que departamento pertenece la muestra que se esta recibiendo
+ID_Paciente_sitio, nvarchar(1),,indica a que sitio pertenece la muestra que se esta recibiendo
+labNumeroFebril, nvarchar(20),,Numero asignado por el laboratorio para llevar el control de las muestras
+dengue_ELISA_lgM, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para la prueba IgM por medio de Elisa para Dengue
+dengue_ELISA_lgM_convaleciente, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para la prueba IgM Convaleciente por medio de Elisa para Dengue
+dengue_ELISA_lgG, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para la prueba IgG por medio de Elisa para Dengue
+dengue_PCR, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para la prueba por medio de PCR para Dengue
+malaria_gotaGruesa, nvarchar(3),"0,1,80,NA,MI,NE",Resultado de malaria por gota gruesa
+malaria_PCR, nvarchar(3),"0,1,80,NA,MI,NE",resultado de malaria por PCR
+rickettsias_ELISA, nvarchar(3),"0,1,80,NA,MI,NE",resultado de Rickettsias por Elisa
+rickettsias_IF, nvarchar(3),"0,1,80,NA,MI,NE",resultado de Rickettsias por Inmunofluorescencia
+rickettsias_PCR, nvarchar(3),"0,1,80,NA,MI,NE",resultado de Rickettsias por PCR
+rickettsias_PCR_ecto, nvarchar(3),"0,1,80,NA,MI,NE",resultado de Rickettsias por PCR ectoparásitos
+rickettsia_IF_convaleciente, nvarchar(3),"0,1,80,NA,MI,NE",resultado de Rickettsias por Inmunofluorescencia convalenciente
+control_ITS2tick, nvarchar(3),"0,1,80,NA,MI,NE",Control
+Se_HizoPanBioAgudo, nvarchar(3),"0,1,80,NA,MI,NE",si se realizó examen de PanBio en sangre Aguda
+Lepto_PanBioKit, nvarchar(3),"0,1,80,NA,MI,NE",Kit de PanBio para leptospira
+Se_HizoPanBioConvalenciente, nvarchar(3),"0,1,80,NA,MI,NE",si se realizó examen de PanBio en sangre convaleciente
+lepto_MAT, nvarchar(3),"0,1,80,NA,MI,NE",resultado lepto mat
+PanBioKit_Convaleciente, nvarchar(3),"0,1,80,NA,MI,NE",Kit de PanBio para leptospira
+Bartonella_IF_Agudo, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para Bartonella en Sangre Aguda
+Bartonella_IF_convaleciente, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para Bartonella en Sangre Convaleciente
+Bartonella_PCR, nvarchar(3),"0,1,80,NA,MI,NE",Resultado para Bartonella PCR
+Observaciones, nvarchar(255),,Observaciones a la muestra
