@@ -1,0 +1,131 @@
+---
+title: "20180921_Muestras rotavirus para genotipificacion"
+author: "Claudia Jarquin"
+date: "21 de septiembre de 2018"
+output: html_document
+---
+
+# Objetivo:
+
+Revisar los datos de VICo de 2007-2018 para revisar qué muestras no tienen datos de genotipificación de rotavirus. Se pretende hacer un envío de estas muestras a CDC para que realicen la genotipificación. Puede haber algunas muestras no genotipificadas que están almacenadas en el laboratorio de Y. Qvarnstrom en CDC. Procedimiento:
+- Revisar qué muestras tienen/no tienen datos de genotipificación.
+- De las muestras que no tienen datos de genotipificación, corroborar fechas para confirmar cuáles están aún en UVG y cuáles están en CDC.
+- Generar listados para envío de UVG a CDC, y para traslado de CDC a laboratorio de U. Parashar para la genotipificación (si es necesario).
+
+## 1. Obtener datos del servidor y cargar librerías necesarias
+
+```{r obtener datos}
+library("RODBC")
+DServerL <- odbcDriverConnect(connection = "DRIVER=SQL Server;Trusted_Connection=Yes;DATABASE=Laboratorio;SERVER=FSX-GT3")
+DiarrMx <- sqlQuery(DServerL, "SELECT * FROM dbo.MUESTRASLABSS_3")
+# Esta siguiente línea es para obtener la vista de los datos que se enviaron a ATL.
+DiarrEnvioATL <- sqlQuery(DServerL, "SELECT * FROM dbo.VicoDiarreaEnvioATL20170627")
+DServer <- odbcDriverConnect(connection = "DRIVER=SQL Server;Trusted_Connection=Yes;DATABASE=ViCo;SERVER=FSX-GT3")
+Diarr <- sqlQuery(DServer, "SELECT * FROM Clinicos.Basica_Diarrea")
+odbcClose(DServer) #cerrar la conexion
+save.image(file="2018-09-24_basica diarrea y mx.RData")
+load("2018-09-21_basica diarrea y mx.RData")
+
+```
+
+```{r librerias, include=FALSE}
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(reshape2)
+library(knitr)
+library(DataCombine)
+```
+
+
+## 2. Confirmar que todas las muestras en ATL tengan genotipificacion
+
+Confirmaremos cuántas son las muestras positivas a rotavirus que se enviaron a CDC en ATL. Esta base no tiene datos de genotipificación, pero vienen de DiarrMx que se explorará más abajo.
+
+2018-09-24: Total positivos rotavirus 636 (+ 1 que es 80)
+
+
+```{r chequear datos ATL, include=FALSE}
+atl <- DiarrEnvioATL
+table(atl$rotavirus, useNA="always")
+# Total positivos: 636
+names(atl)
+```
+El siguiente código revisa la base de muestras del lab, siguiendo el código qu se usó para generar la base de las muestras enviadas a ATL, para ver los datos existentes de genotipificacion.
+
+```{r chequear datos base DiarrMx, include=FALSE}
+DiarrMx <- Diarr
+# DiarrMx <- DiarrMx[(DiarrMx$fechaHoraAdmision < "2016-08-01"),]
+
+DiarrMx <- DiarrMx[(!is.na(DiarrMx$elegibleDiarrea)),]
+DiarrMx <- DiarrMx[DiarrMx$elegibleDiarrea==1,]
+table(DiarrMx$SiteDepartamento, DiarrMx$SiteType, useNA="always")
+DiarrMx <- DiarrMx[(!is.na(DiarrMx$pacienteInscritoViCo)),]
+DiarrMx <- DiarrMx[DiarrMx$pacienteInscritoViCo==1,]
+DiarrMx <- DiarrMx[!is.na(DiarrMx$SASubjectID),]
+
+table(DiarrMx$muestraHecesColecta, useNA="always")
+# 8865 muestras colectadas
+# table(DiarrMx$NAS_existe, useNA="always")
+# 4925 muestras almacenadas
+table(DiarrMx$pruebaRotavirusHizo, useNA="always")
+# 6456 pruebas de rotavirus hechas, 38 como 97, 1125 NA
+table(DiarrMx$rotavirus, useNA="always")
+# 779 positivas a rotavirus, 1 mx como 80
+table(DiarrMx$pruebaRotavirusHizo, DiarrMx$rotavirus, useNA="always")
+# table(DiarrMx$rotavirus, DiarrMx$NAS_existe, useNA="always")
+
+table(DiarrMx$pruebaRotavirusTipificacionHizo, useNA="always")
+# 573 pruebas de rotavirus tipificación hechas
+table(DiarrMx$rotavirus, DiarrMx$pruebaRotavirusTipificacionHizo, useNA="always")
+# 569 positivos a rota con genotipificacion
+
+# Crear base de datos con positivos a rota
+rotaDiarrMx <- DiarrMx[!is.na(DiarrMx$rotavirus),]
+rotaDiarrMx <- rotaDiarrMx[(rotaDiarrMx$rotavirus==1),]
+
+table(rotaDiarrMx$pruebaRotavirusTipificacionHizo, useNA="always")
+# 569 de 779 muestras positivas con tipificación hecha y resultados
+
+# Crear base de datos con positivos a rota pero sin datos de tipificacion
+rotaDiarrMx_negGT <- rotaDiarrMx[is.na(rotaDiarrMx$pruebaRotavirusTipificacionHizo),]
+
+
+```
+
+
+## 3. Usar listado de muestras de envío ATL para ver cuáles deben irse a ATL 
+
+Usar el listado de muestras enviadas a CDC para ver cuáles es necesario mandar a Umesh, y unir con el listado de muestras que hay aqui. 
+
+Listado usado de muestras ATL: "20170727_Datos envio ATL.csv"
+
+```{r chequear datos ATL, include=FALSE}
+atl <- DiarrEnvioATL
+table(atl$rotavirus, useNA="always")
+# Total positivos: 636
+names(atl)
+
+```
+
+```{r chequear cuales estan en GT y ATL, include=FALSE}
+# Unir el dataset de negativos a genotipificacion con los datos del envio a ATL
+atl$enATL <- 1
+
+l1rota <- merge(rotaDiarrMx_negGT, atl, by="SASubjectID", all.x=TRUE)
+l1rota$enATL <- ifelse((!is.na(l1rota$enATL)),1,0)
+table(l1rota$enATL, useNA="always")
+
+
+
+mxRotaGUA <- l1rota[l1rota$enATL==0,c("SASubjectID")]
+mxRotaATL <- l1rota[l1rota$enATL==1, c("SASubjectID")]
+
+setwd("G:/Mi unidad/Research Projects/VICO/Diarrea/20180921_Rotavirus genotyping")
+write.csv(mxRotaGUA, "20180928_Muestras rotavirus GUA para envio.csv")
+write.csv(mxRotaATL, "20180928_Muestras rotavirus en ATL.csv")
+```
+
+
+
+
