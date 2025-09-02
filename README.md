@@ -16,6 +16,6 @@ If there is anything that should be here but isn't, let us know by filing an
 
 
 
-[new-pull-request]: compare
+[new-pull-request]: /ces-peie/vico-analysis/compare
 [learn-pull-request]: https://help.github.com/articles/about-pull-requests/
-[new-issue]: issues/new
+[new-issue]: /ces-peie/vico-analysis/issues/new
