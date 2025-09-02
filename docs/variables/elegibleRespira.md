@@ -3,14 +3,13 @@
 This variable depends on `elegibleRespiraViCo` and `elegibleRespiraIMCI` alone.
 If either case definition is met, then `elegibleRespira = 1`.
 
-```
+```vb
 If
   elegibleRespiraViCo = 1 Or elegibleRespiraIMCI = 1
 Then
   elegibleRespira = 1
 Else
   elegibleRespira = 2
-End If
 ```
 
 ```mermaid
@@ -19,8 +18,57 @@ flowchart
   elegibleRespira --> elegibleRespiraIMCI
 ```
 
+
+
+
+
+
+
+
+
+# elegibleRespiraViCo
+
+ViCo case definition. `elegibleRespiraViCo = 1` when all the following is true:
+1. Case originates from the catching area
+2. At least one respiratory illnes sympthom is present
+3. There's an indication of infection
+
+```vb
+If (
+    ' Case found in Santa Rosa and originates from Santa Rosa, Jalapa or Jutiapa
+    (SiteCode.StartsWith("06") And departamento in (6,21,22))
+    Or
+    ' Case found at Quetzaltenango and originates from the listed municipios
+    (SiteCode.StartsWith("09") And municipio in (901,902,903,909,910,911,913,914,916,923))
+  )
+
+  ' At least one Respira sympthom is present
+  And sintomasRespira = 1
+
+  ' There's a sign of infection
+  And (
+       sintomasRespiraFiebre = 1
+    Or sintomasRespiraHipotermia = 1
+    Or sintomasFiebre = 1
+    Or sintomasRespiraCGB = 1
+    Or diferencialAnormal = 1
+  )
+
+Then
+    elegibleRespiraViCo = 1
+Else
+    elegibleRespiraViCo = 2
+```
+
 ```mermaid
-graph TD;
-  elegibleRespira --> elegibleRespiraViCo;
-  elegibleRespira --> elegibleRespiraIMCI;
+flowchart
+  elegibleRespiraViCo --> SiteCode
+  elegibleRespiraViCo --> departamento
+  elegibleRespiraViCo --> municipio
+  elegibleRespiraViCo --> sintomasRespira
+  elegibleRespiraViCo --> sintomasRespiraFiebre
+  elegibleRespiraViCo --> sintomasRespiraHipotermia
+  elegibleRespiraViCo --> sintomasFiebre
+  elegibleRespiraViCo --> sintomasRespiraCGB
+  elegibleRespiraViCo --> diferencialAnormal
 ```
