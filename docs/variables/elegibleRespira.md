@@ -25,7 +25,7 @@ flowchart
 ViCo case definition. `elegibleRespiraViCo = 1` when all the following is true:
 1. Case originates from the catching area
 2. At least one respiratory illnes sympthom is present
-3. There's an indication of infection
+3. There's a sign of infection
 
 ```vb
 If (
@@ -65,6 +65,98 @@ flowchart
   elegibleRespiraViCo --> sintomasFiebre
   elegibleRespiraViCo --> sintomasRespiraCGB
   elegibleRespiraViCo --> diferencialAnormal
+```
+
+
+
+# elegibleRespiraIMCI
+
+This case definition was introduced in 2013 to implement the recommendations
+from WHO in their Integrated Management of Childhood Illness handbook (IMCI).
+
+There are essentially two branches:
+
+1. Kids under two months
+2. Kids over two moths but under five years
+
+```vb
+If
+  (edadAnios = 0 And edadMeses < 2)
+  And
+  (
+    (sintomasRespiraTaquipnea = 1 Or sintomasRespiraNinioCostillasHundidas = 1)
+    Or
+    (
+      (sintomasRespiraTos = 1 Or sintomasRespiraDificultadRespirar = 1)
+      And
+      (
+           sintomasRespiraNinioEstridor = 1
+        Or hipoxemia = 1
+        Or ninioCianosisObs = 1
+        Or ninioBeberMamar = 2
+        Or ninioVomitaTodo = 1
+        Or ninioTuvoConvulsiones = 1
+        Or ninioTuvoConvulsionesObs = 1
+        Or ninioTieneLetargiaObs = 1
+        Or ninioDesmayoObs = 1
+        Or ninioCabeceoObs = 1
+        Or ninioMovimientoObs = 2
+        Or ninioMovimientoObs = 3
+      )
+    )
+  )
+Then
+  elegibleRespiraIMCI = 1
+
+ElseIf
+  (
+    (edadAnios = 0 And edadMeses >= 2)
+    Or
+    (edadAnios > 0 And edadAnios < 5)
+  )
+  And
+  (sintomasRespiraTos = 1 Or sintomasRespiraDificultadRespirar = 1)
+  And
+  (
+       sintomasRespiraTaquipnea = 1
+    Or sintomasRespiraNinioCostillasHundidas = 1
+    Or sintomasRespiraNinioEstridor = 1
+    Or hipoxemia = 1
+    Or ninioCianosisObs = 1
+    Or ninioBeberMamar = 2
+    Or ninioVomitaTodo = 1
+    Or ninioTuvoConvulsiones = 1
+    Or ninioTuvoConvulsionesObs = 1
+    Or ninioTieneLetargiaObs = 1
+    Or ninioDesmayoObs = 1
+    Or ninioCabeceoObs = 1
+  )
+Then
+  elegibleRespiraIMCI = 1
+Else
+  elegibleRespiraIMCI = 2
+```
+
+```mermaid
+flowchart
+  elegibleRespiraIMCI --> edadAnios
+  elegibleRespiraIMCI --> edadMeses
+  elegibleRespiraIMCI --> sintomasRespiraTaquipnea
+  elegibleRespiraIMCI --> sintomasRespiraNinioCostillasHundidas
+  elegibleRespiraIMCI --> sintomasRespiraTos
+  elegibleRespiraIMCI --> sintomasRespiraDificultadRespirar
+  elegibleRespiraIMCI --> sintomasRespiraNinioEstridor
+  elegibleRespiraIMCI --> hipoxemia
+  elegibleRespiraIMCI --> ninioCianosisObs
+  elegibleRespiraIMCI --> ninioBeberMamar
+  elegibleRespiraIMCI --> ninioVomitaTodo
+  elegibleRespiraIMCI --> ninioTuvoConvulsiones
+  elegibleRespiraIMCI --> ninioTuvoConvulsionesObs
+  elegibleRespiraIMCI --> ninioTieneLetargiaObs
+  elegibleRespiraIMCI --> ninioDesmayoObs
+  elegibleRespiraIMCI --> ninioCabeceoObs
+  elegibleRespiraIMCI --> ninioMovimientoObs
+  elegibleRespiraIMCI --> ninioMovimientoObs
 ```
 
 
@@ -181,99 +273,10 @@ flowchart
 
 
 
-# elegibleRespiraIMCI
-
-This case definition was introduced in 2013 to implement the recommendations
-from WHO in their Integrated Management of Childhood Illness handbook (IMCI).
-
-There are essentially two branches:
-
-1. Kids under two months
-2. Kids over two moths but under five years
-
-```vb
-If
-  (edadAnios = 0 And edadMeses < 2)
-  And
-  (
-    (sintomasRespiraTaquipnea = 1 Or sintomasRespiraNinioCostillasHundidas = 1)
-    Or
-    (
-      (sintomasRespiraTos = 1 Or sintomasRespiraDificultadRespirar = 1)
-      And
-      (
-           sintomasRespiraNinioEstridor = 1
-        Or hipoxemia = 1
-        Or ninioCianosisObs = 1
-        Or ninioBeberMamar = 2
-        Or ninioVomitaTodo = 1
-        Or ninioTuvoConvulsiones = 1
-        Or ninioTuvoConvulsionesObs = 1
-        Or ninioTieneLetargiaObs = 1
-        Or ninioDesmayoObs = 1
-        Or ninioCabeceoObs = 1
-        Or ninioMovimientoObs = 2
-        Or ninioMovimientoObs = 3
-      )
-    )
-  )
-Then
-  elegibleRespiraIMCI = 1
-
-ElseIf
-  (
-    (edadAnios = 0 And edadMeses >= 2)
-    Or
-    (edadAnios > 0 And edadAnios < 5)
-  )
-  And
-  (sintomasRespiraTos = 1 Or sintomasRespiraDificultadRespirar = 1)
-  And
-  (
-       sintomasRespiraTaquipnea = 1
-    Or sintomasRespiraNinioCostillasHundidas = 1
-    Or sintomasRespiraNinioEstridor = 1
-    Or hipoxemia = 1
-    Or ninioCianosisObs = 1
-    Or ninioBeberMamar = 2
-    Or ninioVomitaTodo = 1
-    Or ninioTuvoConvulsiones = 1
-    Or ninioTuvoConvulsionesObs = 1
-    Or ninioTieneLetargiaObs = 1
-    Or ninioDesmayoObs = 1
-    Or ninioCabeceoObs = 1
-  )
-Then
-  elegibleRespiraIMCI = 1
-Else
-  elegibleRespiraIMCI = 2
-```
-
-```mermaid
-flowchart
-  elegibleRespiraIMCI --> edadAnios
-  elegibleRespiraIMCI --> edadMeses
-  elegibleRespiraIMCI --> sintomasRespiraTaquipnea
-  elegibleRespiraIMCI --> sintomasRespiraNinioCostillasHundidas
-  elegibleRespiraIMCI --> sintomasRespiraTos
-  elegibleRespiraIMCI --> sintomasRespiraDificultadRespirar
-  elegibleRespiraIMCI --> sintomasRespiraNinioEstridor
-  elegibleRespiraIMCI --> hipoxemia
-  elegibleRespiraIMCI --> ninioCianosisObs
-  elegibleRespiraIMCI --> ninioBeberMamar
-  elegibleRespiraIMCI --> ninioVomitaTodo
-  elegibleRespiraIMCI --> ninioTuvoConvulsiones
-  elegibleRespiraIMCI --> ninioTuvoConvulsionesObs
-  elegibleRespiraIMCI --> ninioTieneLetargiaObs
-  elegibleRespiraIMCI --> ninioDesmayoObs
-  elegibleRespiraIMCI --> ninioCabeceoObs
-  elegibleRespiraIMCI --> ninioMovimientoObs
-  elegibleRespiraIMCI --> ninioMovimientoObs
-```
-
-
-
 # hipoxemia
+
+This was measured with a pulse oximeter that was not always available on the
+field.
 
 ```vb
 If
