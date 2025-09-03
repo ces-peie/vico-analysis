@@ -104,3 +104,30 @@ flowchart
   sintomasRespira --> sintomasRespiraNinioCostillasHundidas
   sintomasRespira --> resultadoAnormalExamenPulmones
 ```
+
+
+
+# sintomasRespiraTaquipnea
+
+```vb
+If
+  (edadAnios >= 5 And (respiraPorMinutoPrimaras24Horas >= 20 Or respiraPorMinuto >= 20))
+  Or
+  (edadAnios < 5  And edadAnios >= 1 And (respiraPorMinutoPrimaras24Horas >= 40 Or respiraPorMinuto >= 40))
+  Or
+  (edadAnios = 0  And edadMeses >= 2 And edadMeses <= 11 And (respiraPorMinutoPrimaras24Horas >= 50 Or respiraPorMinuto >= 50))
+  Or
+  (edadAnios = 0  And edadMeses < 2  And (respiraPorMinutoPrimaras24Horas >= 60 Or respiraPorMinuto >= 60))
+Then
+  sintomasRespiraTaquipnea = 1
+Else
+  sintomasRespiraTaquipnea = 2
+```
+
+```mermaid
+flowchart
+  sintomasRespiraTaquipnea --> edadAnios
+  sintomasRespiraTaquipnea --> edadMeses
+  sintomasRespiraTaquipnea --> respiraPorMinutoPrimaras24Horas
+  sintomasRespiraTaquipnea --> respiraPorMinuto
+```
