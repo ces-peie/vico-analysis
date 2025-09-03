@@ -131,3 +131,30 @@ flowchart
   sintomasRespiraTaquipnea --> respiraPorMinutoPrimaras24Horas
   sintomasRespiraTaquipnea --> respiraPorMinuto
 ```
+
+
+
+# sintomasRespiraFiebre + sintomasRespiraHipotermia
+
+This pair of variables are computed by the same code and evaluated at the same time
+
+```vb
+If temperaturaPrimeras24Horas >= 38.0 Then
+  sintomasRespiraFiebre = 1
+  sintomasRespiraHipotermia = 2
+ElseIf temperaturaPrimeras24Horas < 35.5 Then
+  sintomasRespiraFiebre = 2
+  sintomasRespiraHipotermia = 1
+ElseIf temperaturaPrimeras24Horas < 38.0 And temperaturaPrimeras24Horas >= 35.5 Then
+  sintomasRespiraFiebre = 2
+  sintomasRespiraHipotermia = 2
+Else
+  sintomasRespiraFiebre = Nothing
+  sintomasRespiraHipotermia = Nothing
+```
+
+```mermaid
+flowchart
+  sintomasRespiraFiebre --> temperaturaPrimeras24Horas
+  sintomasRespiraHipotermia --> temperaturaPrimeras24Horas
+```
