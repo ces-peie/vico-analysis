@@ -270,3 +270,21 @@ flowchart
   elegibleRespiraIMCI --> ninioMovimientoObs
   elegibleRespiraIMCI --> ninioMovimientoObs
 ```
+
+
+
+# hipoxemia
+
+```vb
+If
+  oximetroPulso < 90
+Then
+  hipoxemia = 1
+Else
+  hipoxemia = 2
+```
+
+```mermaid
+flowchart
+  hipoxemia --> oximetroPulso
+```
