@@ -158,3 +158,23 @@ flowchart
   sintomasRespiraFiebre --> temperaturaPrimeras24Horas
   sintomasRespiraHipotermia --> temperaturaPrimeras24Horas
 ```
+
+
+# sintomasRespiraCGB
+
+```vb
+If
+  (edadAnios >= 5 And (conteoGlobulosBlancos < 3000 Or conteoGlobulosBlancos > 11000))
+  Or
+  (edadAnios < 5 And (conteoGlobulosBlancos < 5500 Or conteoGlobulosBlancos > 15000))
+Then
+  sintomasRespiraCGB = 1
+Else
+  sintomasRespiraCGB = 2
+```
+
+```mermaid
+flowchart
+  sintomasRespiraCGB --> edadAnios
+  sintomasRespiraCGB --> conteoGlobulosBlancos
+```
