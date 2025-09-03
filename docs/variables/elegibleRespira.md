@@ -20,12 +20,6 @@ flowchart
 
 
 
-
-
-
-
-
-
 # elegibleRespiraViCo
 
 ViCo case definition. `elegibleRespiraViCo = 1` when all the following is true:
@@ -72,8 +66,6 @@ flowchart
   elegibleRespiraViCo --> sintomasRespiraCGB
   elegibleRespiraViCo --> diferencialAnormal
 ```
-
-
 
 
 
