@@ -72,3 +72,43 @@ flowchart
   elegibleRespiraViCo --> sintomasRespiraCGB
   elegibleRespiraViCo --> diferencialAnormal
 ```
+
+
+
+
+
+# sintomasRespira
+
+```vb
+If
+     sintomasRespiraTos = 1
+  Or sintomasRespiraEsputo = 1
+  Or sintomasRespiraHemoptisis = 1
+  Or sintomasRespiraDolorPechoRespirar = 1
+  Or sintomasRespiraDificultadRespirar = 1
+  Or sintomasRespiraFaltaAire = 1
+  Or sintomasRespiraDolorGarganta = 1
+  Or sintomasRespiraTaquipnea = 1
+  Or sintomasRespiraNinioCostillasHundidas = 1
+
+  ' This variable is only available for hospitalized cases
+  Or resultadoAnormalExamenPulmones = 1
+Then
+  sintomasRespira = 1
+Else
+  sintomasRespira = 2
+```
+
+```mermaid
+flowchart
+  sintomasRespira --> sintomasRespiraTos
+  sintomasRespira --> sintomasRespiraEsputo
+  sintomasRespira --> sintomasRespiraHemoptisis
+  sintomasRespira --> sintomasRespiraDolorPechoRespirar
+  sintomasRespira --> sintomasRespiraDificultadRespirar
+  sintomasRespira --> sintomasRespiraFaltaAire
+  sintomasRespira --> sintomasRespiraDolorGarganta
+  sintomasRespira --> sintomasRespiraTaquipnea
+  sintomasRespira --> sintomasRespiraNinioCostillasHundidas
+  sintomasRespira --> resultadoAnormalExamenPulmones
+```
