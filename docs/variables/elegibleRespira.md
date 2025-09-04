@@ -291,3 +291,66 @@ Else
 flowchart
   hipoxemia --> oximetroPulso
 ```
+
+
+
+# Unified dependency graph
+
+```mermaid
+flowchart
+  elegibleRespira --> elegibleRespiraViCo
+  elegibleRespira --> elegibleRespiraIMCI
+
+  elegibleRespiraViCo --> SiteCode
+  elegibleRespiraViCo --> departamento
+  elegibleRespiraViCo --> municipio
+  elegibleRespiraViCo --> sintomasRespira
+  elegibleRespiraViCo --> sintomasRespiraFiebre
+  elegibleRespiraViCo --> sintomasRespiraHipotermia
+  elegibleRespiraViCo --> sintomasFiebre
+  elegibleRespiraViCo --> sintomasRespiraCGB
+  elegibleRespiraViCo --> diferencialAnormal
+
+  elegibleRespiraIMCI --> edadAnios
+  elegibleRespiraIMCI --> edadMeses
+  elegibleRespiraIMCI --> sintomasRespiraTaquipnea
+  elegibleRespiraIMCI --> sintomasRespiraNinioCostillasHundidas
+  elegibleRespiraIMCI --> sintomasRespiraTos
+  elegibleRespiraIMCI --> sintomasRespiraDificultadRespirar
+  elegibleRespiraIMCI --> sintomasRespiraNinioEstridor
+  elegibleRespiraIMCI --> hipoxemia
+  elegibleRespiraIMCI --> ninioCianosisObs
+  elegibleRespiraIMCI --> ninioBeberMamar
+  elegibleRespiraIMCI --> ninioVomitaTodo
+  elegibleRespiraIMCI --> ninioTuvoConvulsiones
+  elegibleRespiraIMCI --> ninioTuvoConvulsionesObs
+  elegibleRespiraIMCI --> ninioTieneLetargiaObs
+  elegibleRespiraIMCI --> ninioDesmayoObs
+  elegibleRespiraIMCI --> ninioCabeceoObs
+  elegibleRespiraIMCI --> ninioMovimientoObs
+  elegibleRespiraIMCI --> ninioMovimientoObs
+
+  sintomasRespira --> sintomasRespiraTos
+  sintomasRespira --> sintomasRespiraEsputo
+  sintomasRespira --> sintomasRespiraHemoptisis
+  sintomasRespira --> sintomasRespiraDolorPechoRespirar
+  sintomasRespira --> sintomasRespiraDificultadRespirar
+  sintomasRespira --> sintomasRespiraFaltaAire
+  sintomasRespira --> sintomasRespiraDolorGarganta
+  sintomasRespira --> sintomasRespiraTaquipnea
+  sintomasRespira --> sintomasRespiraNinioCostillasHundidas
+  sintomasRespira --> resultadoAnormalExamenPulmones
+
+  sintomasRespiraTaquipnea --> edadAnios
+  sintomasRespiraTaquipnea --> edadMeses
+  sintomasRespiraTaquipnea --> respiraPorMinutoPrimaras24Horas
+  sintomasRespiraTaquipnea --> respiraPorMinuto
+
+  sintomasRespiraFiebre --> temperaturaPrimeras24Horas
+  sintomasRespiraHipotermia --> temperaturaPrimeras24Horas
+
+  sintomasRespiraCGB --> edadAnios
+  sintomasRespiraCGB --> conteoGlobulosBlancos
+
+  hipoxemia --> oximetroPulso
+```
